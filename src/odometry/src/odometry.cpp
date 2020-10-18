@@ -58,19 +58,19 @@ geometry_msgs::Pose calc_orientation(std::vector<geometry_msgs::Pose> map, geome
     tf2::Quaternion quaternion;
     quaternion.setRPY( 0, 0, 0 );
     pose.orientation = tf2::toMsg(quaternion);
-    ROS_ERROR("1 %f", calc_distance(map[0], map[map.size()-1]));
+
     if(calc_distance(map[0], map[map.size()-1]) < 20){
         return pose;
     }     
     
     //iterate over map
     for (int i = 0; i < map.size(); i++){
-        ROS_ERROR("2");
+
         geometry_msgs::Pose test;
 
         //compare every point with the distance
         for (int ii = i; i < map.size(); ii++){
-        ROS_ERROR("3 %f", calc_distance(map[i], map[ii]));
+
                 if (calc_distance(map[i], map[ii]) > 4.55){
                      
                     //calculate the first joint
@@ -87,7 +87,7 @@ geometry_msgs::Pose calc_orientation(std::vector<geometry_msgs::Pose> map, geome
                 }
         }
     
-ROS_ERROR("4 %f", calc_distance(test, start));
+
         //if joint has right distance, calulate orientation
         if (calc_distance(test, start) > 5.825){
             double yaw = atan2(test.position.x-start.position.x, test.position.y-start.position.y);
