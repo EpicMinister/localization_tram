@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<robot name="$(arg TRAM)" xmlns:xacro="http://ros.org/wiki/xacro">
+
+<xacro:property name="tram" value="${load_yaml('$(find odometry)/trams/$(arg TRAM)/config/tram.yaml')}"/>
+
+	<link name="map"></link>
+	<link name="odom"></link>
+	<link name="base_link"></link>
+	<link name="imu"></link>
+	<link name="bogie"></link>
+	
+	
+    <joint name="map_odom_joint" type="fixed">
+        <parent link="map" />
+        <child link="odom" />
+        <origin rpy="0 0.0 0.0" xyz="0.0 0.0 0.0" />
+    </joint>
+
+    <joint name="odom_base_link_joint" type="floating">
+        <parent link="odom" />
+        <child link="base_link" />
+        <origin rpy="0 0.0 0.0" xyz="0.0 0.0 0.0" />
+    </joint>
+
+	<joint name="base_link_imu_joint" type="fixed">
+        <parent link="base_link" />
+        <child link="imu" />
+        <origin xyz="${tram['sensors']['base_link_imu_joint']['x']}
+                    	${tram['sensors']['base_link_imu_joint']['y']}
+                        ${tram['sensors']['base_link_imu_joint']['z']}"
+                rpy="${tram['sensors']['base_link_imu_joint']['roll']}
+                        ${tram['sensors']['base_link_imu_joint']['pitch']}
+                        ${tram['sensors']['base_link_imu_joint']['yaw']}"/>
+    </joint>
+
+	<joint name="base_link_bogie_joint" type="fixed">
+        <parent link="base_link" />
+        <child link="bogie" />
+        <origin xyz="${tram['sensors']['base_link_bogie_joint']['x']}
+                        ${tram['sensors']['base_link_bogie_joint']['y']}
+                        ${tram['sensors']['base_link_bogie_joint']['z']}"
+                rpy="${tram['sensors']['base_link_bogie_joint']['roll']}
+                        ${tram['sensors']['base_link_bogie_joint']['pitch']}
+                        ${tram['sensors']['base_link_bogie_joint']['yaw']}"/>
+    </joint>
+
+</robot>

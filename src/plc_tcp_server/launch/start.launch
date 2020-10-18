@@ -1,0 +1,7 @@
+<launch>
+    <arg name="PLC_PORT" default="55000"/>
+    <param name="plc_port" type="int" value="$(arg PLC_PORT)"/>
+    <node name="plc_tcp_server_node" pkg="plc_tcp_server" type="plc_tcp_server_node"> 
+    </node>
+
+</launch>

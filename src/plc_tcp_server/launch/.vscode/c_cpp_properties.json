@@ -1,0 +1,36 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/erfan/mass_projects/ros/devel/include/**",
+        "/home/erfan/FSD/Bitbucket/fsd/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/erfan/mass_projects/ros/src/5_sensors/ars_40X/include/**",
+        "/home/erfan/FSD/Bitbucket/fsd/src/1_sense/camera_cone_detection/nn_darknet_yolo/darknet_ros/include/**",
+        "/home/erfan/mass_projects/ros/src/6_drivers/ibeco_core/include/**",
+        "/home/erfan/mass_projects/ros/src/5_sensors/ibeo_scala/include/**",
+        "/home/erfan/mass_projects/ros/src/5_sensors/swift_nav/libsbp_ros_msgs/include/**",
+        "/home/erfan/mass_projects/ros/src/5_sensors/netModule/include/**",
+        "/home/erfan/mass_projects/ros/src/6_drivers/networ_interface/include/**",
+        "/home/erfan/mass_projects/ros/src/5_sensors/swift_nav/piksi_multi_cpp/include/**",
+        "/home/erfan/mass_projects/ros/src/5_sensors/swift_nav/rqt_gps_rtk_plugin/include/**",
+        "/home/erfan/mass_projects/ros/src/6_drivers/socket_can/include/**",
+        "/home/erfan/FSD/Bitbucket/fsd/src/0_common/swri_profiler/swri_profiler/include/**",
+        "/home/erfan/FSD/Bitbucket/fsd/src/0_common/swri_profiler/swri_profiler_tools/include/**",
+        "/home/erfan/FSD/Bitbucket/fsd/src/2_plan/trajectory_planner/include/**",
+        "/home/erfan/mass_projects/ros/src/5_sensors/ueye_cam/include/**",
+        "/home/erfan/mass_projects/ros/src/5_sensors/velodyne/velodyne_driver/include/**",
+        "/home/erfan/mass_projects/ros/src/5_sensors/velodyne/velodyne_laserscan/include/**",
+        "/home/erfan/mass_projects/ros/src/5_sensors/velodyne/velodyne_pcl/include/**",
+        "/home/erfan/mass_projects/ros/src/5_sensors/velodyne/velodyne_pointcloud/include/**",
+        "/home/erfan/FSD/Bitbucket/fsd/src/5_sensors/zed/zed_interfaces/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ]
+}

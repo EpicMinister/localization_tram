@@ -1,0 +1,40 @@
+<launch>
+
+    <!--Arguments-->
+    <arg name="TRAM" default="tram_1"/>
+
+    <!--Set Robot description-->
+    <param name="robot_description" command="$(find xacro)/xacro '$(find odometry)/urdf/tram.xacro' TRAM:='$(arg TRAM)'" />
+
+    <!--Robot transform-->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" >
+        <param name="publish_frequency" value="100"/>
+    </node>   
+    
+    <!--Convert IMU in right achses-->
+    <node name="imu_converter" pkg="odometry" type="converter" />  
+
+    <!--Main Odometry Node-->
+    <node name="odometry" pkg="odometry" type="odometry_node" />  
+
+    <!--Transforms the IMU in base_link-->
+    <node pkg="imu_transformer" type="imu_transformer_node" name="imu_data_transformer" output="screen">
+        <remap from="imu_in/data" to="imu/corrected"/>
+        <remap from="imu_in/mag" to="piksi/mag"/>
+        <remap from="imu_out" to="imu"/>
+        <param name="target_frame" value="base_link"/>
+    </node>
+
+    <!--Calculate orientaion by madgwick-->
+    <node pkg="imu_filter_madgwick" type="imu_filter_madgwick" name="imu_filter_madgwick_node" output="screen">
+        <param name="do_bias_estimation" value="true"/>
+        <param name="do_adaptive_gain" value="true"/>
+        <param name="use_mag" value="true"/>
+        <param name="gain_acc" value="0.01"/>
+        <param name="gain_mag" value="0.01"/>
+        <remap from="imu/data_raw" to="imu/corrected"/>
+        <remap from="imu/mag" to="imu/mag"/>
+        <remap from="imu/data" to="imu/madgwick"/>
+    </node>
+
+</launch>
