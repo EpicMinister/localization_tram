@@ -150,7 +150,7 @@ void cb_imu(const sensor_msgs::Imu imu_odom) {
 //Velocity callback, calulate way
 void cb_twist(const plc_tcp_server::TramStatus tram) {
 
-    //calcuöate dt
+    //calculate dt
     static ros::Time stamp;
     static ros::Time last_velocity_stamp = stamp;
     stamp = tram.header.stamp;
